@@ -9,12 +9,15 @@ import {
   IfFirebaseAuthedAnd,
 } from "@react-firebase/auth";
 
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
 // Import the functions you need from the SDKs you need
 //import {initializeApp} from "firebase/app";
 import { getFirestore } from "firebase/firestore/lite";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
+import { Login } from "./Login";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -38,6 +41,21 @@ const Context = createContext({
   app: null,
   auth: null,
 });
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login />,
+  },
+  {
+    path: "/app",
+    element: <App />,
+  },
+  {
+    path: "/categories",
+    element: <div>Edit categories</div>,
+  },
+]);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -71,20 +89,10 @@ root.render(
       >
         Sign Out
       </button>
-      <FirebaseAuthConsumer>
-        {/* @ts-ignore */}
-        {({ isSignedIn, user, providerId }) => {
-          return (
-            <pre style={{ height: 300, overflow: "auto" }}>
-              {JSON.stringify({ isSignedIn, user, providerId }, null, 2)}
-            </pre>
-          );
-        }}
-      </FirebaseAuthConsumer>
       <div>
         <IfFirebaseAuthed>
           {() => {
-            return <div>You are authenticated</div>;
+            return <RouterProvider router={router} />;
           }}
         </IfFirebaseAuthed>
         <IfFirebaseAuthedAnd
