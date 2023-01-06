@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,33 +14,18 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Route::get('/clear', function () {
-
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
-
-    return "Cleared!";
-});
-
-Route::middleware('auth')->group(function () {
-    Route::get('/api/user', [\App\Http\Controllers\UserController::class, 'get']);
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/app', function () {
-    return view('app');
-})->name('app');
-//->middleware(['auth'])
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/login', function () {
-    return view('welcome');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/register', function () {
-    return view('welcome');
-});
+require __DIR__.'/auth.php';
