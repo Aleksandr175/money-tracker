@@ -1,8 +1,19 @@
 import { Head } from "@inertiajs/inertia-react";
-import React from "react";
+import { Inertia } from "@inertiajs/inertia";
+import React, { useEffect } from "react";
 import AuthenticatedLayout from "../Layouts/AuthenticatedLayout";
+import axios from "axios";
 
 export default function Categories(props) {
+    useEffect(() => {
+        console.log("get cat d");
+        /*const a = Inertia.get("/categories/list").then((res) => {
+            console.log(res);
+        });*/
+
+        axios.get("/categories/list").then((res) => console.log(res));
+    }, []);
+
     return (
         <AuthenticatedLayout
             auth={props.auth}

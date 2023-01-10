@@ -5,6 +5,7 @@ import { Head } from "@inertiajs/inertia-react";
 import React from "react";
 import AuthenticatedLayout from "../../Layouts/AuthenticatedLayout";
 
+// @ts-ignore
 export default function Edit({ auth, mustVerifyEmail, status }) {
     return (
         <AuthenticatedLayout
