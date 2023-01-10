@@ -26,6 +26,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
+        $this->call(CurrencySeeder::class);
+        $this->call(AccountSeeder::class);
+
         \App\Models\Category::factory(5)->create();
 
         \App\Models\Category::factory()->create([
