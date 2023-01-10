@@ -17,4 +17,5 @@
 - Package json
   - script 
     - "build": "vite build"
-  - npm run watch
+  - "npm run watch" - watcher for building project
+  - "npm run dev" - watcher with typescript
