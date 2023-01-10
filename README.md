@@ -12,3 +12,9 @@
 - Docker
     - ./vendor/bin/sail + command
       - ex. **/vendor/bin/sail composer require laravel/breeze --dev**
+      - alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+      - sail up
+- Package json
+  - script 
+    - "build": "vite build"
+  - npm run watch
