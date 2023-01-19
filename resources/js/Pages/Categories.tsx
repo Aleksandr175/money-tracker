@@ -1,17 +1,28 @@
 import { Head } from "@inertiajs/inertia-react";
-import { Inertia } from "@inertiajs/inertia";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import AuthenticatedLayout from "../Layouts/AuthenticatedLayout";
 import axios from "axios";
 
-export default function Categories(props) {
-    useEffect(() => {
-        console.log("get cat d");
-        /*const a = Inertia.get("/categories/list").then((res) => {
-            console.log(res);
-        });*/
+interface ICategory {
+    id: number;
+    name: string;
+}
 
-        axios.get("/categories/list").then((res) => console.log(res));
+export default function Categories(props) {
+    const [categories, setCategories] = useState<ICategory[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setIsLoading(true);
+
+        axios
+            .get("/categories/list")
+            .then((res) => {
+                setCategories(res.data.data);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, []);
 
     return (
@@ -32,6 +43,16 @@ export default function Categories(props) {
                         <div className="p-6 text-gray-900">Categories</div>
                     </div>
                 </div>
+
+                {isLoading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <div>
+                        {categories.map((category) => {
+                            return <div>{category.name}</div>;
+                        })}
+                    </div>
+                )}
             </div>
         </AuthenticatedLayout>
     );
