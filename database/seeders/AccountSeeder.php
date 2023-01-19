@@ -15,6 +15,8 @@ class AccountSeeder extends Seeder
      */
     public function run()
     {
+        Account::factory(5)->create();
+
         Account::create([
             'userId' => 11,
             'name' => 'Dollars',

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
-import Dropdown from "@/Components/Dropdown";
-import NavLink from "@/Components/NavLink";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
+import Dropdown from "../components/Dropdown";
+import NavLink from "../components/NavLink";
+import ResponsiveNavLink from "../components/ResponsiveNavLink";
 import { Link } from "@inertiajs/inertia-react";
 import React from "react";
+import ApplicationLogo from "../components/ApplicationLogo";
 
 export default function Authenticated({ auth, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -30,10 +30,10 @@ export default function Authenticated({ auth, header, children }) {
                                     Dashboard
                                 </NavLink>
                                 <NavLink
-                                    href={route("categories")}
-                                    active={route().current("categories")}
+                                    href={route("transactions")}
+                                    active={route().current("transactions")}
                                 >
-                                    Categories
+                                    Transactions
                                 </NavLink>
                             </div>
                         </div>
@@ -70,6 +70,14 @@ export default function Authenticated({ auth, header, children }) {
                                             href={route("profile.edit")}
                                         >
                                             Profile
+                                        </Dropdown.Link>
+                                        <Dropdown.Link href={route("accounts")}>
+                                            Accounts
+                                        </Dropdown.Link>
+                                        <Dropdown.Link
+                                            href={route("categories")}
+                                        >
+                                            Categories
                                         </Dropdown.Link>
                                         <Dropdown.Link
                                             href={route("logout")}

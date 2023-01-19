@@ -34,6 +34,14 @@ Route::get('/categories', function () {
     return Inertia::render('Categories');
 })->middleware(['auth', 'verified'])->name('categories');
 
+Route::get('/transactions', function () {
+    return Inertia::render('Transactions');
+})->middleware(['auth', 'verified'])->name('transactions');
+
+Route::get('/accounts', function () {
+    return Inertia::render('Accounts');
+})->middleware(['auth', 'verified'])->name('accounts');
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/categories/list', [CategoryController::class, 'get'])->name('categories.list');
 });
