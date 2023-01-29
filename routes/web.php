@@ -44,6 +44,7 @@ Route::get('/accounts', function () {
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/categories/list', [CategoryController::class, 'get'])->name('categories.list');
+    Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
 });
 
 

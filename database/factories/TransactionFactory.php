@@ -17,12 +17,12 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            'userId' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 10),
             'amount' => fake()->numberBetween(-10000, 10000),
             'type' => 1,
             'comment' => fake()->text(30),
-            'accountId' => null,
-            'categoryId' => null
+            'account_id' => null,
+            'category_id' => null
         ];
     }
 }

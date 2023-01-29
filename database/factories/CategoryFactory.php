@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'userId' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 10),
             'name' => fake()->word(),
         ];
     }

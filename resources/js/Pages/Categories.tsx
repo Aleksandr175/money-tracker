@@ -11,6 +11,8 @@ interface ICategory {
 export default function Categories(props) {
     const [categories, setCategories] = useState<ICategory[]>([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isAdding, setIsAdding] = useState(false);
+    const [name, setName] = useState("");
 
     useEffect(() => {
         setIsLoading(true);
@@ -24,6 +26,20 @@ export default function Categories(props) {
                 setIsLoading(false);
             });
     }, []);
+
+    const addCategory = () => {
+        setIsAdding(true);
+        axios
+            .post("/categories/store", {
+                name,
+            })
+            .then((res) => {
+                setCategories(res.data.data);
+            })
+            .finally(() => {
+                setIsAdding(false);
+            });
+    };
 
     return (
         <AuthenticatedLayout
@@ -55,6 +71,23 @@ export default function Categories(props) {
                                 })}
                             </div>
                         )}
+
+                        <h3>Add New Category</h3>
+
+                        <input
+                            type={"text"}
+                            value={name}
+                            disabled={isAdding}
+                            onChange={(e) => setName(e.currentTarget.value)}
+                        />
+
+                        <button
+                            type={"button"}
+                            onClick={addCategory}
+                            disabled={isAdding}
+                        >
+                            Add
+                        </button>
                     </div>
                 </div>
             </div>

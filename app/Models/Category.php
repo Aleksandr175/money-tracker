@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
+    public static $snakeAttributes = false;
 
     protected $guarded = [];
 }

@@ -18,35 +18,35 @@ class AccountSeeder extends Seeder
         Account::factory(5)->create();
 
         Account::create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Dollars',
-            'currencyId' => 1,
+            'currency_id' => 1,
             'amount' => '1000',
-            'startAmount' => '1000'
+            'start_amount' => '1000'
         ]);
 
         Account::create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Rubles',
-            'currencyId' => 5,
+            'currency_id' => 5,
             'amount' => '100000',
-            'startAmount' => '100000'
+            'start_amount' => '100000'
         ]);
 
         Account::create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Euro',
-            'currencyId' => 2,
+            'currency_id' => 2,
             'amount' => '7500',
-            'startAmount' => '7500'
+            'start_amount' => '7500'
         ]);
 
         Account::create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Brazil Reals',
-            'currencyId' => 4,
+            'currency_id' => 4,
             'amount' => '1500',
-            'startAmount' => '1500'
+            'start_amount' => '1500'
         ]);
     }
 }

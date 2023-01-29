@@ -33,17 +33,17 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::factory(5)->create();
 
         \App\Models\Category::factory()->create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Food',
         ]);
 
         \App\Models\Category::factory()->create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'House',
         ]);
 
         \App\Models\Category::factory()->create([
-            'userId' => 11,
+            'user_id' => 11,
             'name' => 'Other',
         ]);
     }

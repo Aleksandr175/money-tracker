@@ -16,17 +16,17 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
 
-            $table->bigInteger('userId')->unsigned();
-            $table->bigInteger('categoryId')->unsigned()->nullable();
-            $table->bigInteger('accountId')->unsigned()->nullable();
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned()->nullable();
+            $table->bigInteger('account_id')->unsigned()->nullable();
 
             $table->string('amount', 50)->default('0');
             $table->integer('type')->default(1);
             $table->text('comment')->nullable();
 
-            $table->foreign('userId')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('categoryId')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('accountId')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

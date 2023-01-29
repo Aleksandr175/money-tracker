@@ -18,12 +18,12 @@ class TransactionSeeder extends Seeder
         \App\Models\Transaction::factory(10)->create();
 
         Transaction::create([
-            'userId' => 11,
+            'user_id' => 11,
             'amount' => 100,
             'type' => 1,
             'comment' => 'Test transaction',
-            'accountId' => 1,
-            'categoryId' => 1
+            'account_id' => 1,
+            'category_id' => 1
         ]);
     }
 }
