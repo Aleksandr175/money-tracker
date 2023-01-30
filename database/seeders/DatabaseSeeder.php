@@ -46,5 +46,7 @@ class DatabaseSeeder extends Seeder
             'user_id' => 11,
             'name' => 'Other',
         ]);
+
+        $this->call(TransactionSeeder::class);
     }
 }

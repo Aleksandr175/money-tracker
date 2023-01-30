@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +47,12 @@ Route::get('/accounts', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/categories/list', [CategoryController::class, 'get'])->name('categories.list');
     Route::post('/categories/store', [CategoryController::class, 'store'])->name('categories.store');
+
+    Route::get('/transactions/list', [TransactionController::class, 'get'])->name('transactions.list');
+    Route::post('/transactions/store', [TransactionController::class, 'store'])->name('transactions.store');
+
+    Route::get('/accounts/list', [AccountController::class, 'get'])->name('accounts.list');
+    Route::post('/accounts/store', [AccountController::class, 'store'])->name('accounts.store');
 });
 
 

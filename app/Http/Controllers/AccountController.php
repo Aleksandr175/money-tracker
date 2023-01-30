@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAccountRequest;
 use App\Http\Requests\UpdateAccountRequest;
+use App\Http\Resources\AccountResource;
 use App\Models\Account;
+use Illuminate\Support\Facades\Auth;
 
 class AccountController extends Controller
 {
@@ -17,6 +19,15 @@ class AccountController extends Controller
     {
         //
     }
+
+    public function get() {
+        $userId = Auth::user()->id;
+
+        $accounts = Account::where('user_id', $userId)->get();
+
+        return AccountResource::collection($accounts);
+    }
+
 
     /**
      * Show the form for creating a new resource.

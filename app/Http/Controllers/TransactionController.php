@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
+use Illuminate\Support\Facades\Auth;
 
 class TransactionController extends Controller
 {
@@ -16,6 +18,14 @@ class TransactionController extends Controller
     public function index()
     {
         //
+    }
+
+    public function get() {
+        $userId = Auth::user()->id;
+
+        $transactions = Transaction::where('user_id', $userId)->orderBy('id', 'desc')->get();
+
+        return TransactionResource::collection($transactions);
     }
 
     /**

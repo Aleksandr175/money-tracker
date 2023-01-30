@@ -21,8 +21,10 @@ return new class extends Migration
             $table->bigInteger('account_id')->unsigned()->nullable();
 
             $table->string('amount', 50)->default('0');
-            $table->integer('type')->default(1);
+            $table->integer('type')->default(1); // ?
             $table->text('comment')->nullable();
+
+            $table->date('date')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
